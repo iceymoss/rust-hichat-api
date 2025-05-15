@@ -176,6 +176,7 @@ impl UserService {
         // 计算偏移量, 类型转换
         let offset: u64 = ((req.page - 1) * req.page_size) as u64;
         query = query.offset(offset);
+        query = query.limit(req.page_size as u64);
         
         let query_result = query.all(db).await;
         let user_list = match query_result { 
@@ -200,8 +201,9 @@ impl UserService {
 
         Ok(ListResponse{
             list: user_list,
-            total: total_pages as i32,
+            total: total as i32,
             page: req.page,
+            total_page: total_pages as i32,
         })
     }
 }

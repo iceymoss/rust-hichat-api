@@ -42,6 +42,7 @@ pub struct ListResponse {
     pub list: Vec<UserResponse>, //和go的切片功能类似
     pub total: i32,
     pub page: i32,
+    pub total_page: i32,
 }
 
 #[derive(Debug, Deserialize)]
