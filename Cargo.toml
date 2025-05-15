@@ -1,0 +1,30 @@
+[package]
+name = "rust-hichat-api"
+version = "0.1.0"
+edition = "2024"
+authors = ["iceymoss"]
+
+[dependencies]
+# Axum 相关
+axum = "0.7"
+tokio = { version = "1.0", features = ["full"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["trace"] }  # 中间件（日志、CORS等）
+
+# SeaORM 相关
+#sea-orm = { version = "0.12", features = ["sqlx-postgres", "runtime-tokio", "macros"] }
+#sqlx = { version = "0.7", features = ["postgres","runtime-tokio-rustls"]} # 必须启用此特性以支持 SSL 方法
+# 辅助工具
+serde = { version = "1.0", features = ["derive"] }
+dotenvy = "0.15"  # 加载 .env 文件
+async-trait = "0.1"  # 支持异步 Trait
+thiserror = "1.0"  # 错误处理
+
+sea-orm = { version = "0.12", features = ["sqlx-postgres", "runtime-tokio-rustls", "macros"] }
+sqlx = { version = "0.7", features = ["postgres", "runtime-tokio-rustls"] }
+uuid = { version = "1.16.0", features = ["v4"] }
+
+chrono = { version = "0.4.31", features = ["serde"] }
+
+argon2 = { version = "0.5.3", features = ["std"] } # 必须启用 std 特性
+rand = "0.8.5"  # 修正版本号
