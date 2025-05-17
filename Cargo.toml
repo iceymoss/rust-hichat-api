@@ -4,6 +4,24 @@ version = "0.1.0"
 edition = "2024"
 authors = ["iceymoss"]
 
+# 命令行工具
+[[bin]]
+name = "icey-cli"
+path = "src/bin/cli.rs"
+
+# web服务
+[[bin]]
+name = "web"
+path = "src/main.rs"
+
+# 测试工具
+[[bin]]
+name = "testing"
+path = "src/test/test.rs"
+
+[lib]
+path = "src/lib.rs" # 多个入口，必须存在这个文件
+
 [dependencies]
 # Axum 相关
 axum = "0.7"
@@ -28,3 +46,13 @@ chrono = { version = "0.4.31", features = ["serde"] }
 
 argon2 = { version = "0.5.3", features = ["std"] } # 必须启用 std 特性
 rand = "0.8.5"  # 修正版本号
+clap = { version = "4.5.38", features = ["derive"] }
+
+surge-ping = "0.8.2"  # 使用实际存在的版本
+anyhow = { version = "1.0", features = [] }        # 错误处理
+dns-lookup = "1.0"
+env_logger = "0.11.8"
+log = "0.4.27"    # 域名解析
+
+redis = { version = "0.24", features = ["tokio-comp"] }
+deadpool-redis = "0.12"

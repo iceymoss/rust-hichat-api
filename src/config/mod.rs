@@ -1,2 +1,4 @@
 
-pub mod database; // 导出 users 模块
+pub mod database;
+mod redis;
+// 导出 users 模块
