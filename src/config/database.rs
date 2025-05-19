@@ -9,14 +9,14 @@ static DB_CONN: OnceLock<DatabaseConnection> = OnceLock::new();
 /// 初始化全局数据库连接池
 pub async fn connect_db() -> Result<(), DbErr> {
     let url = format!(
-        "postgres://dba@localhost:26257/wc_upsells\
+        "postgres://iceymoss@localhost:26257/hichat2\
         ?sslmode=verify-full\
         &sslrootcert={ca_cert}\
         &sslkey={client_key}\
         &sslcert={client_cert}",
-        ca_cert = "/home/jeff/certs/ca.crt",
-        client_key = "/home/jeff/certs/client.dba.key",
-        client_cert = "/home/jeff/certs/client.dba.crt"
+        ca_cert = "/certs/ca.crt",
+        client_key = "client.iceymoss.key",
+        client_cert = "client.iceymoss.crt"
     );
 
     let conn = Database::connect(&url).await?;
