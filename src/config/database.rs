@@ -14,7 +14,7 @@ pub async fn connect_db() -> Result<(), DbErr> {
         &sslrootcert={ca_cert}\
         &sslkey={client_key}\
         &sslcert={client_cert}",
-        ca_cert = "/certs/ca.crt",
+        ca_cert = "ca.crt",
         client_key = "client.iceymoss.key",
         client_cert = "client.iceymoss.crt"
     );
