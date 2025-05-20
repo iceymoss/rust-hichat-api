@@ -1,14 +1,18 @@
 // 目录下的文件需要导入，并且配置一个mod.rs文件
 // 并且在main中需要使用mod导入
 // 然后才能使用use到某一个具体的内容上
-mod config;
-mod entities;
-mod handlers;
-mod models;
-mod routes;
-mod services;
+// mod config;
+// mod entities;
+// mod handlers;
+// mod models;
+// mod routes;
+// mod services;
 
-use crate::routes::app_router::AppRouter;
+
+use rust_hichat_api::routes::app_router::AppRouter;
+use rust_hichat_api::routes;
+use rust_hichat_api::config;
+use rust_hichat_api::config::redis::init_rdb;
 
 #[tokio::main]
 async fn main() {
@@ -21,6 +25,9 @@ async fn main() {
             return;
         }
     }
+
+    init_rdb().await;
+    
     
     let router = routes::user_router::user_routes(AppRouter::new().router);
     
