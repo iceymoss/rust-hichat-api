@@ -19,6 +19,10 @@ path = "src/main.rs"
 name = "testing"
 path = "src/test/test.rs"
 
+[[bin]]
+name = "task"
+path = "src/tasks/task.rs"
+
 [lib]
 path = "src/lib.rs" # 多个入口，必须存在这个文件
 
@@ -56,3 +60,9 @@ log = "0.4.27"    # 域名解析
 
 redis = { version = "0.24", features = ["tokio-comp"] }
 deadpool-redis = "0.12"
+
+tokio-cron-scheduler = "0.14.0"  # 定时任务
+dotenv = "0.15"  # 环境变量加载
+
+lettre = { version = "0.11", default-features = false, features = ["smtp-transport", "tokio1-rustls-tls"] }
+tracing = "0.1.41"
